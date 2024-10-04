@@ -3,4 +3,19 @@
 
 {% block content %}
     <h1>Welcome to the Book Store</h1>
+    {% if user.is_authenticated %}
+    <p>
+        Hi, {{ user.username }}! You're logged in.
+    </p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+    {% else %}
+    <p>
+        Please log in to access your account.
+    </p>
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
 {% endblock content %}
