@@ -30,24 +30,25 @@
                         </a> 
                     </li>
                     {% if user.is_authenticated %}
-                        {% comment %} <li class="nav-item">
-                            <form method="post" action="{% url 'logout' %}">
+                        <li class="nav-item">
+                            {% comment %} <form method="post" action="{% url 'account_logout' %}">
                                 {% csrf_token %}
                                 <button type="submit" class="nav-link btn btn-link" style="border: none; background: none;">Logout</button>
-                            </form>
-                        </li> {% endcomment %}
-                        <li class="nav-item">
-                            <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                            </form> {% endcomment %}
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% comment %} <li class="nav-item">
+                            <form id="logout-form" method="post" action="{% url 'account_logout' %}" style="display: none;">
                                 {% csrf_token %}
                             </form>
                             <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-                        </li>
+                        </li> {% endcomment %}
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">Register</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                         </li>
                     {% endif %}
                 </ul>
