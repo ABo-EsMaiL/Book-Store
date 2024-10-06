@@ -186,7 +186,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 #     }
 # }
 
-
+# Brevo STMP Email Config
 
 DEFAULT_FROM_EMAIL = "ahh943112@gmail.com"
 EMAIL_HOST = 'smtp-relay.brevo.com'
@@ -194,3 +194,8 @@ EMAIL_HOST_USER = '7d5d04001@smtp-brevo.com'
 EMAIL_HOST_PASSWORD = 'jsCH7mTkZE5avbUp'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
+
+# Media
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
