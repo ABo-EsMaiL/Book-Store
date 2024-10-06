@@ -1,0 +1,19 @@
+{% extends "account/email/base_message.txt" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}
+{% autoescape off %}
+{% user_display user as user_display %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+You're receiving this email because you recently created a new account on {{ site_name }}.
+To verify your email address, click on the following link:
+{{ activate_url }}
+{% endblocktrans %}
+{% if not user.is_verified_email %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+If you didn't create an account on {{ site_name }}, please ignore this email.
+{% endblocktrans %}
+{% endif %}
+{% endautoescape %}
+{% endblock content %}

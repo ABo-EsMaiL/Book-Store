@@ -177,10 +177,19 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 SITE_ID = 1
 # ACCOUNT_SESSION_REMEMBER = True
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
 #         'EMAIL_AUTHENTICATION': True
 #     }
 # }
+
+
+
+DEFAULT_FROM_EMAIL = "ahh943112@gmail.com"
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_HOST_USER = '7d5d04001@smtp-brevo.com'
+EMAIL_HOST_PASSWORD = 'jsCH7mTkZE5avbUp'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True

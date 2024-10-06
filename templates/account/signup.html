@@ -13,4 +13,7 @@
         <button class="btn btn-success" type="submit">Sign Up</button> </form>
     </form>
     <p>Already have an account? <a href="{% url 'account_login' %}">Login</a></p>
+    <p>
+        <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+    </p>
 {% endblock content %}
