@@ -16,6 +16,24 @@
         </p> {% endcomment %}
         <a href="{% url 'book_list' %}">Back to Book List</a>
         <hr>
+        <div class="reviews">
+            <h2>Reviews</h2>
+            {% comment %} {% if user.is_authenticated %}
+                <form method="post" action="{% url 'books:review_create' book.id %}">
+                    {% csrf_token %}
+                    <textarea name="content" rows="4" cols="50"></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            {% endif %} {% endcomment %}
+            {% for review in book.reviews.all %}
+            <p>{{ review.review }} ({{ review.author }})</p>
+
+                <hr>
+            {% endfor %}
+            {% comment %} <a href="{% url 'books:book_reviews' book.id %}">View all reviews</a> {% endcomment %}
+            {% comment %} <a href="{% url 'books:review_update' review.id %}">Edit</a> |
+            <a href="{% url 'books:review_delete' review.id %}">Delete</a> {% endcomment %}
+        </div>
         {% comment %} <h2>Comments</h2>
         {% for comment in comments %}
             <p>{{ comment.user }} - {{ comment.created_at }}</p>
