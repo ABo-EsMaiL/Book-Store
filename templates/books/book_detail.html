@@ -3,7 +3,13 @@
 
 {% block content %}
     <div class="book-detail">
-        <img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.title }}"> 
+        {% if book.cover %}
+                <a href="{{book.get_absolute_url}}">
+                    <img class="bookcover rounded" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                </a>
+            {% else %}
+                <!-- Optionally leave this empty if you don't want to show a default image -->
+        {% endif %} 
         <h1>{{ book.title }}</h1>
         <p>Author: {{ book.author }}</p>
         <p>Price: {{ book.price }}$</p>
