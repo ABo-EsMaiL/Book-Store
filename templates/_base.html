@@ -43,6 +43,13 @@
                             </form> {% endcomment %}
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
+                        <ul>
+                            <form action="{% url 'search_results' %}" class="d-flex" method="get">
+                                {% csrf_token %}
+                                <input class="form-control me-2" type="search" name="q" aria-label="Search" placeholder="Search...">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </ul>
                         {% comment %} <li class="nav-item">
                             <form id="logout-form" method="post" action="{% url 'account_logout' %}" style="display: none;">
                                 {% csrf_token %}
