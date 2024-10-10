@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "allauth",
     "allauth.account",
+    "debug_toolbar",
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.cache.UpdateCacheMiddleware", # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,7 +67,15 @@ MIDDLEWARE = [
     
     # Downloaded Middleware
     "allauth.account.middleware.AccountMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware", # new
 ]
+
+# Cashes
+CACHE_MIDDLEWARE_ALIAS = "default" 
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ""
+
 
 ROOT_URLCONF = 'django_project.urls'
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -199,3 +209,10 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+
+# django-debug-toolbar 
+import socket
+
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname()) 
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
