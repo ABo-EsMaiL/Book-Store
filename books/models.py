@@ -26,9 +26,9 @@ class Book(models.Model):
         indexes = [
             models.Index(fields=['id'], name='id_index'),
         ]
-        permissions = [
-            ('special_status', 'Can read all books')
-        ]
+        # permissions = [
+        #     ('special_status', 'Can read all books')
+        # ]
 
 class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
