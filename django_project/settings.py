@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     "whitenoise.runserver_nostatic",
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     "django.contrib.sites",
     # Third-party
     "crispy_forms",
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "debug_toolbar",
+    
     # local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
@@ -211,6 +214,8 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 
 # django-debug-toolbar 
@@ -234,3 +239,11 @@ SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 SESSION_COOKIE_SECURE = env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)
 
 CSRF_COOKIE_SECURE = env.bool("DJANGO_CSRF_COOKIE_SECURE", default=True)
+
+
+# CLOUDINARY_STORAGE
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": env("CLOUDINARY_API_KEY"),
+    "API_SECRET": env("CLOUDINARY_API_SECRET"),
+}
