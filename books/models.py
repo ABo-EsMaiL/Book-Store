@@ -14,7 +14,7 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=6,
                                 decimal_places=2)
     # cover = models.ImageField(upload_to='covers/', blank=True, null=True)
-    cover_cloud = CloudinaryField('covers/', blank=True)
+    cover = CloudinaryField('covers/', blank=True)
 
     def __str__(self):
         return self.title
