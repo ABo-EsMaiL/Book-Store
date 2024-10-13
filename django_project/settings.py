@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from environs import Env
-import cloudinary-storage
+import cloudinary_storage
 
 env = Env()
 env.read_env()
