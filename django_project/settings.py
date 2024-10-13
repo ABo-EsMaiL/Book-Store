@@ -209,7 +209,7 @@ EMAIL_USE_TLS = True
 
 # Media
 
-MEDIA_URL = "book-store-production-b7cc.up.railway.app/media/"
+MEDIA_URL = "https://book-store-production-b7cc.up.railway.app/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
