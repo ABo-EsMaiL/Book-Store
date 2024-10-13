@@ -14,26 +14,35 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# django_project/urls.py
 from django.contrib import admin
-from django.urls import path, include,re_path
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve  # Ensure this import is present
 
 urlpatterns = [
     # Django Admin
     path('ahmed/', admin.site.urls),
+
+    # Serve media files (you may want to remove this if using WhiteNoise or similar)
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+
+    # Serve static files (you may want to remove this if using WhiteNoise or similar)
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+
     # User Management
-    # path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),
-    # local apps
-    path('',include('pages.urls')),
-    path('books/',include('books.urls'))
+
+    # Local apps
+    path('', include('pages.urls')),
+    path('books/', include('books.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# Debug Toolbar URLs
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
+
